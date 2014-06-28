@@ -13,7 +13,9 @@ private:
 	Joystick moveStick;
 	Joystick turnStick;
 	
-	double getAbsMoveStick();
+	double getMagMoveStick();
+	double getAngMoveStick();
+	
 	double getAbsTurnStick();
 }
 #endif
