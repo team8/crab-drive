@@ -1,5 +1,5 @@
 #ifndef ROBOT_H
-#def ROBOT_H
+#define ROBOT_H
 #include <WPILib.h>
 
 class Robot {
@@ -9,19 +9,20 @@ class Robot {
 	
 	public:
 		Robot();
+		drivetrainCommand(DriveCommand command, DriveArgs arg);
 		void update();
-		typedef enum DriveCommands {
+		typedef enum DriveCommand {
 			ANGLE_ALL_WHEELS,
 			MOVE_ALL_WHEELS,
 			ANGLE_FRONT_WHEELS,
-			ANGLE_BACK_WHEELS-
-		}
+			ANGLE_BACK_WHEELS
+		} DriveCommand;
 		typedef union DriveArgs {
 			double allWheelAngle,
 			double allWheelSpeed,
 			double frontWheelAngle,
 			double backWheelAngle
-		}
+		} DriveArgs;
 
 }
 #endif
