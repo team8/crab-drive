@@ -10,8 +10,10 @@ HumanController::HumanController(Robot* robotPointer):
 }
 
 void HumanController::update() {
-	//send command: angle wheels to getAngMoveStick()
-	//send command: set wheel speed to getMagMoveStick()
+	robot->drivetrainCommand(Robot::DrivetrainCommand.ANGLE_FRONT_WHEELS, getAngMoveStick() + getAbsTurnStick())
+	robot->drivetrainCommand(Robot::DrivetrainCommand.ANGLE_BACK_WHEELS , getAngMoveStick() - getAbsTurnStick())
+	
+	robot->drivetrainCommand(Robot::DrivetrainCommand.MOVE_ALL_WHEELS, getMagMoveStick())
 }
 
 double HumanController::getAngMoveStick() {
@@ -19,7 +21,7 @@ double HumanController::getAngMoveStick() {
 }
 
 double HumanController::getMagMoveStick() {
-	return sqrt(pow(moveStick.getX(), 2.0) + pow(moveStick.getY(), 2.0))
+	return sqrt(pow(moveStick.getX(), 2.0) + pow(moveStick.getY(), 2.0))/sqrt(2.0)
 }
 
 double HumanController::getAbsTurnStick() {
