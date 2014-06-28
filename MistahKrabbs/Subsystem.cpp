@@ -1,9 +1,11 @@
-#include "Subsystem.h"
+#include "Subsystemem.h"
 
-Subsyst::Subsyst() {
+using namespace Krabbs;
+
+Subsystem::Subsystem() {
 	
 }
 
-Subsyst::~Subsyst() {
+Subsystem::~Subsystem() {
 	
 }

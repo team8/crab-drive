@@ -1,6 +1,9 @@
 #include "Drivetrain.h"
 
-Drivetrain::Drivetrain() : Subsyst() {
+
+using namespace Krabbs;
+
+Drivetrain::Drivetrain() : Subsystem() {
 	
 }
 

@@ -1,5 +1,7 @@
 #include "Robot.h"
 
+using namespace Krabbs;
+
 Robot::Robot() {
   drivetrain();
 }

@@ -4,19 +4,22 @@
 #include "Robot.h"
 #include <WPILib.h>
 
-class HumanController {
-private:
-	Robot* robot;
-	Joystick moveStick;
-	Joystick turnStick;
-	
-	double getMagMoveStick();
-	double getAngMoveStick();
-	
-	double getAbsTurnStick();
-public:
-	HumanController(Robot* robot);
-	void update();
-};
+namespace Krabbs {
 
+	class HumanController {
+	private:
+		Robot *robot;
+		Joystick moveStick;
+		Joystick turnStick;
+		
+		double getMagMoveStick();
+		double getAngMoveStick();
+		
+		double getAbsTurnStick();
+	public:
+		HumanController(Robot *robot);
+		void update();
+	};
+
+}
 #endif

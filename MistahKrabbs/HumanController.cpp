@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <cmath>
 
+using namespace Krabbs;
+
 HumanController::HumanController(Robot* robotPointer):
 	moveStick(PORT_MOVE_STICK),
 	turnStick(PORT_TURN_STICK)
