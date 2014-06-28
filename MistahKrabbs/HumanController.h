@@ -1,5 +1,6 @@
 #ifndef HUMANCONTROLLER_H
 #define HUMANCONTROLLER_H
+#include "Constants.h"
 #include "Robot.h"
 
 class HumanController {
