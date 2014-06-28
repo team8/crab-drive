@@ -6,7 +6,6 @@
 
 namespace Krabbs {
 
-
 	class Drivetrain : public Subsystem {
 		
 	private:
