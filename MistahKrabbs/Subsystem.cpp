@@ -1,9 +1,9 @@
 #include "Subsystem.h"
 
-Subsystem::Subsystem() {
+Subsyst::Subsyst() {
 	
 }
 
-Subsystem::~Subsystem() {
+Subsyst::~Subsyst() {
 	
 }

@@ -1,18 +1,17 @@
-#ifndef SUBSYSTEM_H
-#define SUBSYSTEM_H
+#ifndef Subsyst_H
+#define Subsyst_H
 
-class Subsystem {
+class Subsyst {
+	
 private:
 	
 public:
-	Subsystem();
-	virtual Subsystem();
+	Subsyst();
+	virtual ~Subsyst();
 	
-	virtual void update() = 0;
 	virtual void init() = 0;
+	virtual void update() = 0;
 	virtual void disable() = 0;
-	
 };
-
 
 #endif

@@ -2,6 +2,8 @@
 #define ROBOT_H
 #include <WPILib.h>
 
+#include "Drivetrain.h"
+
 class Robot {
 	
 	private: 
