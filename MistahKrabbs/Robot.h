@@ -9,6 +9,7 @@ class Robot {
 	
 	public:
 		Robot();
+		void update();
 
 }
 #endif
