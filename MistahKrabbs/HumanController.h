@@ -2,12 +2,9 @@
 #define HUMANCONTROLLER_H
 #include "Constants.h"
 #include "Robot.h"
+#include <WPILib.h>
 
 class HumanController {
-public:
-	void update();
-	HumanController(Robot* robot)
-	
 private:
 	Robot* robot;
 	Joystick moveStick;
@@ -17,5 +14,9 @@ private:
 	double getAngMoveStick();
 	
 	double getAbsTurnStick();
-}
+public:
+	HumanController(Robot* robot);
+	void update();
+};
+
 #endif

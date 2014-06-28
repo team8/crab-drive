@@ -7,4 +7,4 @@ public:
 	MistahKrabbs();
 	virtual ~MistahKrabbs();
 	
-}
+};
