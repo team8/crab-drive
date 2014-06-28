@@ -14,7 +14,7 @@ Uses crab-drive
 
 Is a robot
 
-that uses and does crab-drive
+that does and useses crab-drive
 
 Does it does crab-drive?
 
