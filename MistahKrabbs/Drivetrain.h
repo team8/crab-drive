@@ -1,12 +1,7 @@
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
 
-namespace Krabbs {
-	class Drivetrain;
-}
-
 #include "Subsystem.h"
-#include "Robot.h"
 #include "WheelUnit.h"
 
 namespace Krabbs {
@@ -29,8 +24,8 @@ namespace Krabbs {
 		virtual void update();
 		virtual void disable();
 		
-		virtual void runCommand(Robot::DriveCommand command, double arg);
-	};
+		virtual void runCommand(Command::DriveCommand command, double arg);
+	} ;
 
 }
 

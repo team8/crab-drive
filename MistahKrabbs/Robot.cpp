@@ -6,11 +6,18 @@ Robot::Robot() {
   drivetrain = new Drivetrain();
 }
 
-Robot::update() {
+void Robot::update() {
   drivetrain->update();
 }
 
-Robot::drivetrainCommand(DriveCommand command, double arg) {
+void Robot::drivetrainCommand(Command::DriveCommand command, double arg) {
   drivetrain->runCommand(command, arg);
 }
 
+void Robot::init() {
+	
+}
+
+void Robot::disable() {
+	
+}

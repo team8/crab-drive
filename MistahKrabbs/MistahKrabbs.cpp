@@ -8,7 +8,7 @@ namespace Krabbs {
 	class MistahKrabbs : public IterativeRobot {
 	private:
 		Robot robot;
-		HumanControllor humanCtrlr;
+		HumanController humanCtrlr;
 	public:
 		MistahKrabbs();
 		virtual ~MistahKrabbs();

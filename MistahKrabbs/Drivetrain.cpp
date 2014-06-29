@@ -16,13 +16,18 @@ void Drivetrain::init() {
 }
 
 void Drivetrain::update() {
-	
+	switch (state) {
+	case IDLE:
+		break;
+	case TELE_DRIVING:
+		break;
+	}
 }
 
 void Drivetrain::disable() {
 	
 }
 
-void Drivetrain::runCommand(Robot::DriveCommand command, double arg) {
+void Drivetrain::runCommand(Command::DriveCommand command, double arg) {
 	
 }
