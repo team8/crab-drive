@@ -3,13 +3,14 @@
 using namespace Krabbs;
 
 Robot::Robot() {
-  drivetrain();
+  drivetrain = new Drivetrain();
 }
 
 Robot::update() {
-  drivetrain.update();
+  drivetrain->update();
 }
 
-Robot::drivetrainCommand(DriveCommand command, DriveArgs arg) {
-  drivetrain.runCommand(command, arg);
+Robot::drivetrainCommand(DriveCommand command, double arg) {
+  drivetrain->runCommand(command, arg);
 }
+

@@ -2,6 +2,11 @@
 #define ROBOT_H
 #include <WPILib.h>
 
+namespace Krabbs {
+	class Robot;
+}
+
+
 #include "Drivetrain.h"
 
 namespace Krabbs {
@@ -9,12 +14,9 @@ namespace Krabbs {
 	class Robot {
 		
 		private: 
-			Drivetrain drivetrain;
-		
+			Drivetrain *drivetrain;
 		public:
 			Robot();
-			void drivetrainCommand(DriveCommand command, DriveArgs arg);
-			void update();
 			
 			typedef enum DriveCommand {
 				ANGLE_ALL_WHEELS,
@@ -23,12 +25,9 @@ namespace Krabbs {
 				ANGLE_BACK_WHEELS
 			} DriveCommand;
 			
-			typedef union DriveArgs {
-				double allWheelAngle;
-				double allWheelSpeed;
-				double frontWheelAngle;
-				double backWheelAngle;
-			} DriveArgs;
+			void drivetrainCommand(DriveCommand command, double arg);
+			
+			void update();
 	
 	};
 
