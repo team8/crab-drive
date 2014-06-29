@@ -9,19 +9,22 @@ class WheelUnit {
     Victor speedVic;
     Victor angleVic;
     Encoder angleEnc;
+    PIDController angleController;
     double targetAngle;
     double targetSpeed;
+    double currentAngle;
+    double calcAngle();
     
   public:
-    WheelUnit(int speedVicPort, int angleVicPort, int angleEncPort);
+    WheelUnit(int speedVicPort, int angleVicPort, int angleEncPort, double distancePerPulse);
     //set speed of speedVic
-    setSpeed(double speed);
+    void setSpeed(double speed);
     //set angle of wheel
-    setAngle(double angle);
+    void setAngle(double angle);
     //get angle
-    double getAngle();
+
     
-    update();
+    void update();
 
 };
 
