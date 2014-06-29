@@ -22,3 +22,7 @@ void Drivetrain::update() {
 void Drivetrain::disable() {
 	
 }
+
+void Drivetrain::runCommand(Robot::DriveCommand command, double arg) {
+	
+}

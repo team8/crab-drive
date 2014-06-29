@@ -14,6 +14,8 @@ namespace Krabbs {
 		virtual void init() = 0;
 		virtual void update() = 0;
 		virtual void disable() = 0;
+	
+		virtual void runCommand() = 0;
 	};
 
 }
