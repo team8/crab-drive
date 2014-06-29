@@ -2,8 +2,8 @@
 
 using namespace Krabbs;
 
-WheelUnit::WheelUnit(int speedVicPort, int angleVicPort, int angleEncPort, double distancePerPulse) :
-  angleEnc((uint32_t)angleVicPort),
+WheelUnit::WheelUnit(int speedVicPort, int angleVicPort, int angleEncPortA, int angleEncPortB, bool direction, double distancePerPulse) :
+  angleEnc((uint32_t)angleEncPortA,(uint32_t)angleEncPortB, direction),
   speedVic((uint32_t)speedVicPort),
   angleVic((uint32_t)angleVicPort),
   angleController(0.1, 0.001, 0.1, &angleEnc, &angleVic)
@@ -11,6 +11,7 @@ WheelUnit::WheelUnit(int speedVicPort, int angleVicPort, int angleEncPort, doubl
 	angleController.SetOutputRange(-1,1);
 	angleEnc.SetDistancePerPulse(distancePerPulse);
 	angleEnc.SetPIDSourceParameter(PIDSourceParameter::kDistance);
+	angleController.Enable();
 	currentAngle = 0;
 	targetAngle = 0;
 	targetSpeed = 0;
@@ -30,7 +31,10 @@ void WheelUnit::setAngle(double angle) {
 double WheelUnit::calcAngle() {
 	double angle = 0;
 	if(angleEnc.GetDistance() < 0) {
-		angle = 360-(angleEnc.GetDistance()*360);
+		if(angleEnc>=-1) {
+			angleEnc = angleEnc-(int)angleEnc;
+		}
+		angle = 360+(angleEnc.GetDistance()*360);
 	}
 	if(angleEnc.getDistance()>0) {
 		angle = (angleEnc.GetDistance()*360);
@@ -42,5 +46,7 @@ double WheelUnit::calcAngle() {
 }
 
 void WheelUnit::update() {
-	speedVic(targetspeed);
+	
+	angleController.SetSetpoint(do later);
+	speedVic(targetSpeed);
 }

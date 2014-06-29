@@ -16,7 +16,7 @@ class WheelUnit {
     double calcAngle();
     
   public:
-    WheelUnit(int speedVicPort, int angleVicPort, int angleEncPort, double distancePerPulse);
+    WheelUnit(int speedVicPort, int angleVicPort, int angleEncPortA, int angleEncPortB, bool direction, double distancePerPulse);
     //set speed of speedVic
     void setSpeed(double speed);
     //set angle of wheel
