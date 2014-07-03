@@ -9,7 +9,7 @@ namespace Krabbs {
 	class Drivetrain : public Subsystem {
 		
 	private:
-		//WheelUnit leftFront, leftBack, rightFront, rightBack;
+		WheelUnit leftFront, leftBack, rightFront, rightBack;
 		
 		enum State {
 			TELE_DRIVING = 12043,

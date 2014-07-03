@@ -6,7 +6,6 @@
 //wheel ports
 #define LEFT_FRONT_SPEED_VIC 0
 #define LEFT_FRONT_ANGLE_VIC 0
-#define LEFT_FRONT_ANGLE_ENC 0
 #define LEFT_FRONT_ANGLE_ENC_A 0
 #define LEFT_FRONT_ANGLE_ENC_B 0
 
