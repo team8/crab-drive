@@ -2,31 +2,36 @@
 #define WHEEL_UNIT_H
 #include <WPILib.h>
 
+#include "Constants.h"
+
 namespace Krabbs {
 
-class WheelUnit {
-  private:
-    Victor speedVic;
-    Victor angleVic;
-    Encoder angleEnc;
-    PIDController angleController;
-    double targetAngle;
-    double targetSpeed;
-    double currentAngle;
-    double calcAngle();
-    
-  public:
-    WheelUnit(int speedVicPort, int angleVicPort, int angleEncPort, double distancePerPulse);
-    //set speed of speedVic
-    void setSpeed(double speed);
-    //set angle of wheel
-    void setAngle(double angle);
-    //get angle
-
-    
-    void update();
-
-};
+	class WheelUnit {
+	  private:
+		Encoder angleEnc;
+		Victor speedVic;
+		Victor angleVic;
+		PIDController angleController;
+		double targetAngle;
+		double targetSpeed;
+		double currentAngle;
+		
+		double calcAngle();
+		double modulo(double a, double b);
+		
+	  public:
+		WheelUnit(uint32_t angleEncPortA, uint32_t angleEncPortB, uint32_t angleVicPort, uint32_t speedVicPort, double distancePerPulse);
+		
+		void init();
+		void update();
+		void disable();
+		
+		void setAngle(double ang);
+		void setSpeed(double spd);
+		
+		double getAngle();
+	
+	};
 
 }
 #endif
