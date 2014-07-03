@@ -21,7 +21,7 @@ void WheelUnit::init() {
 
 void WheelUnit::update() {
 	currentAngle = calcAngle();
-	angleController.SetSetpoint(targetAngle-currentAngle);
+	angleController.SetSetpoint(((targetAngle/360)*WHEEL_CIRCUMFERENCE)-((currentAngle/360)*WHEEL_CIRCUMFERENCE));
 	angleVic.SetSpeed(angleController.Get());
 	
 }
