@@ -53,7 +53,6 @@ double WheelUnit::calcAngle() {
 		}
 		return ((dist/-WHEEL_CIRCUMFERENCE)*360);
 	}
-	
 }
 
 void WheelUnit::setAngle(double ang) { 
