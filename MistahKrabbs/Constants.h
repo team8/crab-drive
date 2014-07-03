@@ -28,5 +28,6 @@
 #define ANGLE_SPEED 0.5
 
 #define WHEEL_CIRCUMFERENCE 0
+#define WHEEL_DIST_PER_PULSE 0
 
 //Wheel ports
