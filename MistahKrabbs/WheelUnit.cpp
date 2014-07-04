@@ -27,6 +27,7 @@ void WheelUnit::update() {
 }
 
 void WheelUnit::disable() {
+	targetAngle = calcAngle();
 	angleVic.SetSpeed(0);
 	speedVic.SetSpeed(0);
 	angleController.Disable();
