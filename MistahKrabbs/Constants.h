@@ -30,4 +30,6 @@
 #define WHEEL_CIRCUMFERENCE 0
 #define WHEEL_DIST_PER_PULSE 0
 
+#define GYRO_PORT 0
+
 //Wheel ports

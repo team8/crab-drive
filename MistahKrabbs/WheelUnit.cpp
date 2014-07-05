@@ -11,25 +11,26 @@ WheelUnit::WheelUnit(uint32_t angleEncPortA, uint32_t angleEncPortB, uint32_t an
 	angleEnc.SetDistancePerPulse(distancePerPulse);
 	angleEnc.SetPIDSourceParameter(Encoder::PIDSourceParameter::kDistance);
 	angleController.SetOutputRange(-1, 1);
-	angleController.Enable();
 	targetAngle = targetSpeed = currentAngle = 0;
 }
 
 void WheelUnit::init() {
 	angleEnc.Start();
+	angleController.Enable();
 }
 
 void WheelUnit::update() {
 	currentAngle = calcAngle();
 	angleController.SetSetpoint(((targetAngle/360)*WHEEL_CIRCUMFERENCE)-((currentAngle/360)*WHEEL_CIRCUMFERENCE));
 	angleVic.SetSpeed(angleController.Get());
-	
+	speedVic.SetSpeed(targetSpeed);
 }
 
 void WheelUnit::disable() {
 	targetAngle = calcAngle();
-	angleVic.SetSpeed(0);
-	speedVic.SetSpeed(0);
+	targetSpeed = 0.0;
+	angleVic.SetSpeed(0.0);
+	speedVic.SetSpeed(0.0);
 	angleController.Disable();
 }
 
@@ -64,15 +65,11 @@ void WheelUnit::setSpeed(double spd) {
 	targetSpeed = spd;
 }
 
-double WheelUnit::modulo(double a, double b) {
+double modulo(double a, double b) {
 	double original = a;
 	while (b <= a) {
 		a += original;
 	}
 	a -= original;
 	return (b - a);
-}
-
-double WheelUnit::getAngle() {
-	return currentAngle;
 }

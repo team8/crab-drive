@@ -4,17 +4,27 @@
 #include "Subsystem.h"
 #include "WheelUnit.h"
 
+//gyroscope
 namespace Krabbs {
 
 	class Drivetrain : public Subsystem {
 		
 	private:
-		WheelUnit leftFront, leftBack, rightFront, rightBack;
+		WheelUnit leftFront, leftBack, rightFront, rightBack;		
+		Gyro gyro;
+		
+		double currentAngle;
+		double targetAngle;
 		
 		enum State {
 			TELE_DRIVING = 12043,
 			IDLE
 		} state;
+		
+		void setAngle(double ang);
+		void setFrontAngle(double ang);
+		void setBackAngle(double ang);
+		void setSpeed(double spd);
 		
 	public:
 		Drivetrain();
