@@ -24,11 +24,11 @@ namespace Krabbs {
 		void update();
 		void disable();
 		
-		void setAngle(double ang);
-		void setSpeed(double spd);
+		void setAngle(double ang); //Expects an ANGLE not a distance. -360 to 360
+		void setSpeed(double spd); // -1 to 1
 		
 		double getCurrentAngle() {
-			return currentangle;
+			return currentAngle;
 		}
 		double getTargetAngle() {
 			return targetAngle;

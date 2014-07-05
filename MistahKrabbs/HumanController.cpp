@@ -5,8 +5,8 @@
 using namespace Krabbs;
 
 HumanController::HumanController(Robot *robotPointer):
-	moveStick(PORT_SPEED),
-	turnStick(PORT_TURN)
+	moveStick(PORT_STRAFE),
+	turnStick(PORT_ROTATE)
 {
 	this->robot = robotPointer;
 }
