@@ -5,27 +5,16 @@
 using namespace Krabbs;
 
 HumanController::HumanController(Robot *robotPointer):
-	moveStick(PORT_STRAFE),
-	turnStick(PORT_ROTATE)
+	swerveStick(PORT_SWERVE),
+	rotateStick(PORT_ROTATE)
 {
 	this->robot = robotPointer;
 }
 
 void HumanController::update() {
-	robot->drivetrainCommand(Command::ANGLE_FRONT_WHEELS, getAngMoveStick() + getAbsTurnStick());
-	robot->drivetrainCommand(Command::ANGLE_BACK_WHEELS , getAngMoveStick() - getAbsTurnStick());
-	
-	robot->drivetrainCommand(Command::MOVE_ALL_WHEELS, getMagMoveStick());
-}
-
-double HumanController::getAngMoveStick() {
-	return atan2(moveStick.GetY(), moveStick.GetX());
-}
-
-double HumanController::getMagMoveStick() {
-	return sqrt(pow(moveStick.GetX(), 2.0) + pow(moveStick.GetY(), 2.0))/sqrt(2.0);
-}
-
-double HumanController::getAbsTurnStick() {
-	return abs(turnStick.GetX());
+	if (swerveStick.GetX() != 0.0 || swerveStick.GetY() != 0.0) {
+		robot->drivetrainCommand(Command::ANGLE_ALL_WHEELS, getAngSwerveStick(), getMagSwerveStick());
+	} else if (getRotateStick() != 0.0) {
+		robot->drivetrainCommand(Command::ROTATE_ROBOT, getRotateStick());
+	}
 }

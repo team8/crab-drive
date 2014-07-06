@@ -13,7 +13,7 @@ namespace Krabbs {
 		public:
 			Robot();
 			
-			void drivetrainCommand(Command::DriveCommand command, double arg);
+			void drivetrainCommand(Command::DriveCommand command, double arg, double arg2 = 0);
 			
 			void update();
 			void init();

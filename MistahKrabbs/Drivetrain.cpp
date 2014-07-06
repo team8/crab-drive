@@ -52,6 +52,12 @@ void Drivetrain::update() {
 		rightFront.update();
 		rightBack.update();
 		break;
+	case ROTATING:
+		leftFront.update();
+		leftBack.update();
+		rightFront.update();
+		rightBack.update();
+		break;
 	}
 }
 
@@ -65,17 +71,8 @@ void Drivetrain::disable() {
 
 void Drivetrain::setAngle(double ang) {
 	targetAngle = ang;
-	setFrontAngle(targetAngle);
-	setBackAngle(targetAngle);
-}
-
-void Drivetrain::setFrontAngle(double ang) {
 	leftFront.setAngle(targetAngle);
 	rightFront.setAngle(targetAngle);
-	state = TELE_DRIVING;
-}
-
-void Drivetrain::setBackAngle(double ang) {
 	leftBack.setAngle(targetAngle);
 	rightBack.setAngle(targetAngle);
 	state = TELE_DRIVING;
@@ -89,19 +86,21 @@ void Drivetrain::setSpeed(double spd) {
 	state = TELE_DRIVING;
 }
 
+void Drivetrain::rotate(double spd) {
+	leftFront.setSpeed(spd);
+	leftBack.setSpeed(spd);
+	rightFront.setSpeed(spd);
+	rightBack.setSpeed(spd);
+	state = ROTATING;
+}
+
 void Drivetrain::runCommand(Command::DriveCommand command, double arg) {
 	switch (command) {
 	case (Command::ANGLE_ALL_WHEELS):
 			setAngle(arg);
 			break;
-	case (Command::MOVE_ALL_WHEELS):
-			setSpeed(arg);
-			break;
-	case (Command::ANGLE_FRONT_WHEELS):
-			setFrontAngle(arg);
-			break;
-	case (Command::ANGLE_BACK_WHEELS):
-			setBackAngle(arg);
+	case (Command::ROTATE_ROBOT):
+			rotate(arg);
 			break;
 	}
 }

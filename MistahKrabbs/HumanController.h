@@ -9,13 +9,12 @@ namespace Krabbs {
 	class HumanController {
 	private:
 		Robot *robot;
-		Joystick moveStick;
-		Joystick turnStick;
+		Joystick swerveStick;
+		Joystick rotateStick; 
 		
-		double getMagMoveStick();
-		double getAngMoveStick();
-		
-		double getAbsTurnStick();
+		double getRotateStick() const { return rotateStick.GetX(); }
+		double getAngSwerveStick() const { return swerveStick.GetDirectionDegrees(); }
+		double getMagSwerveStick() const { return swerveStick.GetMagnitude(); }
 	public:
 		HumanController(Robot *robot);
 		void update();

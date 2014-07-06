@@ -18,13 +18,13 @@ namespace Krabbs {
 		
 		enum State {
 			TELE_DRIVING = 12043,
-			IDLE
+			ROTATING = 9072,
+			IDLE = 72003
 		} state;
 		
 		void setAngle(double ang);
-		void setFrontAngle(double ang);
-		void setBackAngle(double ang);
 		void setSpeed(double spd);
+		void rotate(double spd);
 		
 	public:
 		Drivetrain();
@@ -34,8 +34,8 @@ namespace Krabbs {
 		virtual void update();
 		virtual void disable();
 		
-		virtual void runCommand(Command::DriveCommand command, double arg);
-	} ;
+		virtual void runCommand(Command::DriveCommand command, double arg, double arg2); // when MOVE_ALL_WHEELS, arg is speed. when any other DriveCommand, arg is angle and arg2 is speed 
+	};
 
 }
 

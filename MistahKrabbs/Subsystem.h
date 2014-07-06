@@ -21,9 +21,7 @@ namespace Krabbs {
 	namespace Command {
 		enum DriveCommand {
 			ANGLE_ALL_WHEELS,
-			MOVE_ALL_WHEELS,
-			ANGLE_FRONT_WHEELS,
-			ANGLE_BACK_WHEELS
+			ROTATE_ROBOT
 		};
 	}
 }
