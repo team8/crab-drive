@@ -3,6 +3,7 @@
 #include "Constants.h"
 #include "Robot.h"
 #include <WPILib.h>
+#include <cmath>
 
 namespace Krabbs {
 
