@@ -5,8 +5,8 @@
 
 class XBoxController : public Joystick {
   public:
-    XBoxController(uint32_t port);
-    virtual XBoxController();
+    XBoxController(uint32_t port) : Joysitck(port) {}
+    virtual ~XBoxController() {}
     
     /*Joystick Axes*/
     double getLeftX() { return GetRawAxis(1); }
