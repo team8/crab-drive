@@ -41,18 +41,18 @@ void Drivetrain::update() {
 		rightBack.update();
 		break;
 	case TELE_DRIVING:
-		currentAngle = (gyro.GetAngle() >=360) ? modulo(360, gyro.GetAngle()) : gyro.GetAngle();
-		if (abs(targetAngle - currentAngle) <= 5.0) {
-			targetAngle = currentAngle;
-		} else {
-			setAngle(targetAngle);
-		}
 		leftFront.update();
 		leftBack.update();
 		rightFront.update();
 		rightBack.update();
 		break;
 	case ROTATING:
+		currentAngle = (gyro.GetAngle() >=360) ? modulo(360, gyro.GetAngle()) : gyro.GetAngle();
+		if (abs(targetAngle - currentAngle) <= 5.0) {
+			targetAngle = currentAngle;
+		} else {
+			rotate(targetAngle);
+		}
 		leftFront.update();
 		leftBack.update();
 		rightFront.update();
@@ -94,13 +94,13 @@ void Drivetrain::rotate(double spd) {
 	state = ROTATING;
 }
 
-void Drivetrain::runCommand(Command::DriveCommand command, double arg) {
-	switch (command) {
+void Drivetrain::runCommand(Command::DriveCommand command, double arg, double arg2) {
 	case (Command::ANGLE_ALL_WHEELS):
-			setAngle(arg);
-			break;
+		setAngle(arg); //angle
+		setSpeed(arg2); //speed. NEEDS TO BE DETERMINED (-) OR (+) BASED ON OPTIMAL WAY TO ANGLE
+		break;
 	case (Command::ROTATE_ROBOT):
-			rotate(arg);
-			break;
+		rotate(arg);
+		break;
 	}
 }
