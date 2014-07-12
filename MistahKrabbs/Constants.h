@@ -1,3 +1,12 @@
+#define FRAME_WIDTH 0
+#define FRAME_LENGTH 0 
+
+#define LATERAL_ANGLE 0
+#define FB_ANGLE 0
+
+#define WHEEL_CIRCUMFERENCE 0
+#define WHEEL_DIST_PER_PULSE 0
+
 //stick ports
 #define PORT_STRAFE 1
 #define PORT_ROTATE 2
@@ -25,10 +34,7 @@
 #define RIGHT_BACK_ANGLE_ENC_B 0
 
 //speed wheelunits change angle
-#define ANGLE_SPEED 0.5
 
-#define WHEEL_CIRCUMFERENCE 0
-#define WHEEL_DIST_PER_PULSE 0
 
 #define GYRO_PORT 0
 

@@ -20,6 +20,9 @@ Drivetrain::~Drivetrain() {
 }
 
 void Drivetrain::init() {
+	state = State::IDLE;
+	parallels = LR_PARALLEL; //should actually go through routine to find out.
+	invert = 1; //should actually go through routine
 	leftFront.init();
 	leftBack.init();
 	rightFront.init();
@@ -30,7 +33,7 @@ void Drivetrain::init() {
 
 void Drivetrain::update() {
 	switch (state) {
-	case IDLE:
+	case State::IDLE:
 		leftFront.disable();
 		leftBack.disable();
 		rightFront.disable();
@@ -40,19 +43,13 @@ void Drivetrain::update() {
 		rightFront.update();
 		rightBack.update();
 		break;
-	case TELE_DRIVING:
+	case State::TELE_DRIVING:
 		leftFront.update();
 		leftBack.update();
 		rightFront.update();
 		rightBack.update();
 		break;
-	case ROTATING:
-		currentAngle = (gyro.GetAngle() >=360) ? modulo(360, gyro.GetAngle()) : gyro.GetAngle();
-		if (abs(targetAngle - currentAngle) <= 5.0) {
-			targetAngle = currentAngle;
-		} else {
-			rotate(targetAngle);
-		}
+	case State::ROTATING:
 		leftFront.update();
 		leftBack.update();
 		rightFront.update();
@@ -66,41 +63,67 @@ void Drivetrain::disable() {
 	leftBack.disable();
 	rightFront.disable();
 	rightBack.disable();
-	state = IDLE;
+	state = State::IDLE;
 }
 
-void Drivetrain::setAngle(double ang) {
+void Drivetrain::setAngle(double ang) { // expects -180 to 180
 	targetAngle = ang;
 	leftFront.setAngle(targetAngle);
 	rightFront.setAngle(targetAngle);
 	leftBack.setAngle(targetAngle);
 	rightBack.setAngle(targetAngle);
-	state = TELE_DRIVING;
+	state = State::TELE_DRIVING;
 }
 
-void Drivetrain::setSpeed(double spd) {
+void Drivetrain::setSpeed(double spd) { //expects -1 to 1. getMagnitude returns 0 to 1
 	leftFront.setSpeed(spd);
 	leftBack.setSpeed(spd);
 	rightFront.setSpeed(spd);
 	rightBack.setSpeed(spd);
-	state = TELE_DRIVING;
+	state = State::TELE_DRIVING;
 }
 
-void Drivetrain::rotate(double spd) {
-	leftFront.setSpeed(spd);
-	leftBack.setSpeed(spd);
-	rightFront.setSpeed(spd);
-	rightBack.setSpeed(spd);
-	state = ROTATING;
+void Drivetrain::rotate(double spd) { //expects -1 to 1. NOT ANGLE
+	
+	updateQuadrant();
+
+	if (parallels == Parallel::LR) {
+		leftFront.setSpeed(spd*invert);
+		leftBack.setSpeed(spd*invert); // for all these (+) and (-) might need to be switched
+		rightFront.setSpeed(-spd*invert);
+		rightFront.setSpeed(-spd*invert);
+	} else if (parallels == Parallel::FB) {
+		leftFront.setSpeed(spd*invert);
+		rightFront.setSpeed(spd*invert);
+		leftBack.setSpeed(-spd*invert); // for all these (+) and (-) might need to be switched
+		rightBack.setSpeed(-spd*invert);
+	}
+	state = State::ROTATING;
 }
 
 void Drivetrain::runCommand(Command::DriveCommand command, double arg, double arg2) {
 	case (Command::ANGLE_ALL_WHEELS):
 		setAngle(arg); //angle
-		setSpeed(arg2); //speed. NEEDS TO BE DETERMINED (-) OR (+) BASED ON OPTIMAL WAY TO ANGLE
+		setSpeed(arg2); //speed.
 		break;
 	case (Command::ROTATE_ROBOT):
 		rotate(arg);
 		break;
+	}
+}
+
+void Drivetrain::updateQuadrant() {
+	double avgAng = (leftFront.getAngle() + leftBack.getAngle() + rightFront.getAngle() + rightBack.getAngle()) / 4.0;
+	
+	if (-180 + (FB_ANGLE / 2) > avgAng > -180) { //1. LR
+		invert = 1;
+	} else if (0 - (FB_ANGLE / 2) > avgAng > -180 + (FB_ANGLE / 2)) { //2. FB
+		invert = 1;
+	} else if (0 + (FB_ANGLE / 2) > avgAng > 0 - (FB_ANGLE / 2)) { //3. LRI
+		invert = -1;
+	} else if (180 - (FB_ANGLE / 2) > avgAng > 0 + (FB_ANGLE / 2)) { //4. FBI
+		invert = -1;
+	} else if (180 > avgAng > 180 - (FB_ANGLE / 2)) { //5. LR
+		invert = 1;
 	}
 }

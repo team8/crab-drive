@@ -16,15 +16,23 @@ namespace Krabbs {
 		double currentAngle;
 		double targetAngle;
 		
-		enum State {
+		enum class State {
 			TELE_DRIVING = 12043,
 			ROTATING = 9072,
 			IDLE = 72003
 		} state;
-		
+
+		enum class Parallel {
+			LR, FB
+		} parallels;
+
+
+		int invert;
+
 		void setAngle(double ang);
 		void setSpeed(double spd);
 		void rotate(double spd);
+		void updateQuadrant();
 		
 	public:
 		Drivetrain();
