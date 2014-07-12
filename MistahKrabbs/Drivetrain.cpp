@@ -115,15 +115,15 @@ void Drivetrain::runCommand(Command::DriveCommand command, double arg, double ar
 void Drivetrain::updateQuadrant() {
 	double avgAng = (leftFront.getAngle() + leftBack.getAngle() + rightFront.getAngle() + rightBack.getAngle()) / 4.0;
 	
-	if (-180 + (FB_ANGLE / 2) > avgAng > -180) { //1. LR
+	if (-180 + (LR_ANGLE / 2) > avgAng > -180) { //1. LR
 		invert = 1;
-	} else if (0 - (FB_ANGLE / 2) > avgAng > -180 + (FB_ANGLE / 2)) { //2. FB
+	} else if (0 - (LR_ANGLE / 2) > avgAng > -180 + (LR_ANGLE / 2)) { //2. FB
 		invert = 1;
-	} else if (0 + (FB_ANGLE / 2) > avgAng > 0 - (FB_ANGLE / 2)) { //3. LRI
+	} else if (0 + (LR_ANGLE / 2) > avgAng > 0 - (LR_ANGLE / 2)) { //3. LRI
 		invert = -1;
-	} else if (180 - (FB_ANGLE / 2) > avgAng > 0 + (FB_ANGLE / 2)) { //4. FBI
+	} else if (180 - (LR_ANGLE / 2) > avgAng > 0 + (LR_ANGLE / 2)) { //4. FBI
 		invert = -1;
-	} else if (180 > avgAng > 180 - (FB_ANGLE / 2)) { //5. LR
+	} else if (180 > avgAng > 180 - (LR_ANGLE / 2)) { //5. LR
 		invert = 1;
 	}
 }
