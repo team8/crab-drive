@@ -1,10 +1,10 @@
 #define FRAME_WIDTH 23
 #define FRAME_LENGTH 32 
 
-#define LR_ANGLE 0
-#define FB_ANGLE 0
+#define LR_ANGLE 72 //need to get more accurate
+#define FB_ANGLE 108 //need to get more accurate
 
-#define WHEEL_CIRCUMFERENCE 0
+#define WHEEL_CIRCUMFERENCE 9.4247
 #define WHEEL_DIST_PER_PULSE 0
 
 //stick ports
