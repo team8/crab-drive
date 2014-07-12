@@ -1,7 +1,7 @@
 #define FRAME_WIDTH 0
 #define FRAME_LENGTH 0 
 
-#define LATERAL_ANGLE 0
+#define LR_ANGLE 0
 #define FB_ANGLE 0
 
 #define WHEEL_CIRCUMFERENCE 0
