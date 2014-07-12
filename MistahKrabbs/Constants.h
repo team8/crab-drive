@@ -1,5 +1,5 @@
-#define FRAME_WIDTH 0
-#define FRAME_LENGTH 0 
+#define FRAME_WIDTH 23
+#define FRAME_LENGTH 32 
 
 #define LR_ANGLE 0
 #define FB_ANGLE 0
@@ -8,7 +8,7 @@
 #define WHEEL_DIST_PER_PULSE 0
 
 //stick ports
-#define PORT_STRAFE 1
+#define PORT_SWERVE 1
 #define PORT_ROTATE 2
 #define PORT_OPERATOR 3
 

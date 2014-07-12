@@ -34,7 +34,7 @@ void WheelUnit::disable() {
 	angleController.Disable();
 }
 
-double WheelUnit::calcAngle() {
+double WheelUnit::calcAngle() { //should return -180 to 180
 	double dist = angleEnc.GetDistance();
 	if (dist == 0) {
 		return 0;
@@ -42,10 +42,7 @@ double WheelUnit::calcAngle() {
 		if (dist > WHEEL_CIRCUMFERENCE) {
 			dist = modulo(WHEEL_CIRCUMFERENCE, dist);
 		}
-		if (dist == 0) {
-			return 0;
-		}
-		return ((dist/WHEEL_CIRCUMFERENCE)*360);
+		return (((dist/WHEEL_CIRCUMFERENCE)*360)-180);
 	} else if (dist < 0) {
 		if (dist < -WHEEL_CIRCUMFERENCE) {
 			dist = modulo(-WHEEL_CIRCUMFERENCE, dist);		
@@ -53,7 +50,7 @@ double WheelUnit::calcAngle() {
 		if (dist == 0) {
 			return 0;
 		}
-		return ((dist/WHEEL_CIRCUMFERENCE)*360);
+		return (((dist/WHEEL_CIRCUMFERENCE)*360)-180);
 	}
 }
 

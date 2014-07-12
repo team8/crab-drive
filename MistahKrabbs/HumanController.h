@@ -13,9 +13,9 @@ namespace Krabbs {
 		Joystick swerveStick;
 		Joystick rotateStick; 
 		
-		double getRotateStick() const { return rotateStick.GetX(); }
-		double getAngSwerveStick() const { return swerveStick.GetDirectionDegrees(); }
-		double getMagSwerveStick() const { return swerveStick.GetMagnitude(); }
+		double getRotateStick() { return rotateStick.GetX(); }
+		double getAngSwerveStick() { return swerveStick.GetDirectionDegrees(); }
+		double getMagSwerveStick() { return swerveStick.GetMagnitude(); }
 
 	public:
 		HumanController(Robot *robot);

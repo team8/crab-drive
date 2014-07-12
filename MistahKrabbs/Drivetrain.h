@@ -16,16 +16,15 @@ namespace Krabbs {
 		double currentAngle;
 		double targetAngle;
 		
-		enum class State {
-			TELE_DRIVING = 12043,
-			ROTATING = 9072,
-			IDLE = 72003
+		enum {
+			TELE_DRIVING,
+			ROTATING,
+			IDLE
 		} state;
-
-		enum class Parallel {
+	
+		enum {
 			LR, FB
 		} parallels;
-
 
 		int invert;
 
