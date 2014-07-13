@@ -118,13 +118,18 @@ void Drivetrain::updateQuadrant() {
 	
 	if (-180 + (LR_ANGLE / 2) > avgAng > -180) { //1. LR
 		invert = 1;
+		parallels = LR;
 	} else if (0 - (LR_ANGLE / 2) > avgAng > -180 + (LR_ANGLE / 2)) { //2. FB
+		parallels = FB;
 		invert = 1;
 	} else if (0 + (LR_ANGLE / 2) > avgAng > 0 - (LR_ANGLE / 2)) { //3. LRI
+		parallels = LR;
 		invert = -1;
 	} else if (180 - (LR_ANGLE / 2) > avgAng > 0 + (LR_ANGLE / 2)) { //4. FBI
+		parallels = FB;
 		invert = -1;
 	} else if (180 > avgAng > 180 - (LR_ANGLE / 2)) { //5. LR
+		parallels = LR;
 		invert = 1;
 	}
 }
