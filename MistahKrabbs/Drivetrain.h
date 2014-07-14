@@ -11,10 +11,10 @@ namespace Krabbs {
 		
 	private:
 		WheelUnit leftFront, leftBack, rightFront, rightBack;		
-		Gyro gyro;
+		Gyro gyro; //currently unused
 		
-		double currentAngle;
-		double targetAngle;
+		double currentAngle; //unused
+		double targetAngle; //unused
 		
 		enum {
 			TELE_DRIVING,
