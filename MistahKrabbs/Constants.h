@@ -17,25 +17,25 @@
 #define LEFT_FRONT_ANGLE_VIC 0
 #define LEFT_FRONT_ANGLE_ENC_A 0
 #define LEFT_FRONT_ANGLE_ENC_B 0
+#define LEFT_FRONT_SWITCH 0
 
 #define RIGHT_FRONT_SPEED_VIC 0
 #define RIGHT_FRONT_ANGLE_VIC 0
 #define RIGHT_FRONT_ANGLE_ENC_A 0
 #define RIGHT_FRONT_ANGLE_ENC_B 0
+#define RIGHT_FRONT_SWITCH 0
 
 #define LEFT_BACK_SPEED_VIC 0
 #define LEFT_BACK_ANGLE_VIC 0
 #define LEFT_BACK_ANGLE_ENC_A 0
 #define LEFT_BACK_ANGLE_ENC_B 0
+#define LEFT_BACK_SWITCH 0
 
 #define RIGHT_BACK_SPEED_VIC 0
 #define RIGHT_BACK_ANGLE_VIC 0
 #define RIGHT_BACK_ANGLE_ENC_A 0
 #define RIGHT_BACK_ANGLE_ENC_B 0
-
-//speed wheelunits change angle
-
+#define RIGHT_BACK_SWITCH 0
 
 #define GYRO_PORT 0
-
-//Wheel ports
+#define SWITCH_ANGLE 0 //relative to front, -180 to 180, same as joysticks

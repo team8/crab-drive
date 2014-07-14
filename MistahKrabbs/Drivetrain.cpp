@@ -4,10 +4,10 @@ using namespace Krabbs;
 
 Drivetrain::Drivetrain() : 
 		Subsystem(),
-		leftFront((uint32_t)LEFT_FRONT_ANGLE_ENC_A, (uint32_t)LEFT_FRONT_ANGLE_ENC_B, (uint32_t)LEFT_FRONT_ANGLE_VIC, (uint32_t)LEFT_FRONT_SPEED_VIC, WHEEL_DIST_PER_PULSE),
-		leftBack((uint32_t)LEFT_BACK_ANGLE_ENC_A, (uint32_t)LEFT_BACK_ANGLE_ENC_B, (uint32_t)LEFT_BACK_ANGLE_VIC, (uint32_t)LEFT_BACK_SPEED_VIC, WHEEL_DIST_PER_PULSE),
-		rightFront((uint32_t)RIGHT_FRONT_ANGLE_ENC_A, (uint32_t)RIGHT_FRONT_ANGLE_ENC_B, (uint32_t)RIGHT_FRONT_ANGLE_VIC, (uint32_t)RIGHT_FRONT_SPEED_VIC, WHEEL_DIST_PER_PULSE),
-		rightBack((uint32_t)RIGHT_BACK_ANGLE_ENC_A, (uint32_t)RIGHT_BACK_ANGLE_ENC_B, (uint32_t)RIGHT_BACK_ANGLE_VIC, (uint32_t)RIGHT_BACK_SPEED_VIC, WHEEL_DIST_PER_PULSE),
+		leftFront((uint32_t)LEFT_FRONT_ANGLE_ENC_A, (uint32_t)LEFT_FRONT_SWITCH, (uint32_t)LEFT_FRONT_ANGLE_ENC_B, (uint32_t)LEFT_FRONT_ANGLE_VIC, (uint32_t)LEFT_FRONT_SPEED_VIC, WHEEL_DIST_PER_PULSE),
+		leftBack((uint32_t)LEFT_BACK_ANGLE_ENC_A, (uint32_t)LEFT_BACK_SWITCH, (uint32_t)LEFT_BACK_ANGLE_ENC_B, (uint32_t)LEFT_BACK_ANGLE_VIC, (uint32_t)LEFT_BACK_SPEED_VIC, WHEEL_DIST_PER_PULSE),
+		rightFront((uint32_t)RIGHT_FRONT_ANGLE_ENC_A, (uint32_t)RIGHT_FRONT_SWITCH, (uint32_t)RIGHT_FRONT_ANGLE_ENC_B, (uint32_t)RIGHT_FRONT_ANGLE_VIC, (uint32_t)RIGHT_FRONT_SPEED_VIC, WHEEL_DIST_PER_PULSE),
+		rightBack((uint32_t)RIGHT_BACK_ANGLE_ENC_A, (uint32_t)RIGHT_BACK_SWITCH, (uint32_t)RIGHT_BACK_ANGLE_ENC_B, (uint32_t)RIGHT_BACK_ANGLE_VIC, (uint32_t)RIGHT_BACK_SPEED_VIC, WHEEL_DIST_PER_PULSE),
 		gyro((uint32_t)GYRO_PORT),
 		currentAngle(0),
 		targetAngle(0)
@@ -21,8 +21,8 @@ Drivetrain::~Drivetrain() {
 
 void Drivetrain::init() {
 	state = IDLE;
-	parallels = LR; //should actually go through routine to find out.
-	invert = 1; //should actually go through routine
+	parallels = LR; 
+	invert = 1;
 	leftFront.init();
 	leftBack.init();
 	rightFront.init();
