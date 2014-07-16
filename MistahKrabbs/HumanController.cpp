@@ -10,9 +10,9 @@ HumanController::HumanController(Robot *robotPointer):
 }
 
 void HumanController::update() {
-	if (swerveStick.GetX() != 0.0 || swerveStick.GetY() != 0.0) {
+	if (getMagSwerveStick() >= 0.1) {
 		robot->drivetrainCommand(Command::ANGLE_ALL_WHEELS, getAngSwerveStick(), getMagSwerveStick());
-	} else if (getRotateStick() != 0.0) {
+	} else if (abs(getRotateStick()) >= 0.1) {
 		robot->drivetrainCommand(Command::ROTATE_ROBOT, getRotateStick());
 	}
 }
