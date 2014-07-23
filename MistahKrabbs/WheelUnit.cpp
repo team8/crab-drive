@@ -10,7 +10,7 @@ WheelUnit::WheelUnit(uint32_t angleEncPortA, uint32_t switchport, uint32_t angle
     angleController(0.1, 0.001, 0.1, &angleEnc, &angleVic)
 {
 	angleEnc.SetDistancePerPulse(distancePerPulse);
-	angleEnc.SetPIDSourceParameter(Encoder::PIDSourceParameter::kDistance);
+	angleEnc.SetPIDSourceParameter(PIDSource::kDistance);
 	angleController.SetOutputRange(-1, 1);
 	targetAngle = targetSpeed = currentAngle = 0;
 }
